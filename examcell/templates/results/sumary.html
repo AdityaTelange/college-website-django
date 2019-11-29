@@ -1,0 +1,11 @@
+<div class="card border-info">
+    <div class="card-body">
+        <h5 class="card-title">{{ object|safe }}</h5>
+        <span class="meta blockquote-footer">
+            Posted by <strong>{{ object.author }}</strong> on {{ object.pub_date|date:"F j, Y" }}
+        </span>
+        <div align="center">
+            <a href="{{ object.result_file.url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Result</a>
+        </div>
+    </div>
+</div>

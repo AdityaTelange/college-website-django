@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Results{% endblock title %}
+
+{% block content %}
+
+{% for object in latest %}
+<div class="p-2">
+    {% include 'results/sumary.html' with object=object %}
+    <div class="">
+        {% include 'results/examcell_results_pagination.html' %}
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}
