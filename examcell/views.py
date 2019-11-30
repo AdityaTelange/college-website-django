@@ -2,27 +2,10 @@ from django.contrib.auth.mixins import (
     LoginRequiredMixin,
 )
 from django.views.generic.dates import (
-    ArchiveIndexView, )
+    ArchiveIndexView)
 from django.views.generic.list import ListView
 
 from .models import Result
-
-
-class ResultViewMixin:
-    date_field = 'pub_date'
-    paginate_by = 10
-
-    def __init__(self):
-        self.request = None
-
-    def get_allow_future(self):
-        return self.request.user.is_staff
-
-    def get_queryset(self):
-        if self.request.user.is_staff:
-            return Result.objects.all()
-        else:
-            return Result.objects.published()
 
 
 class ExamCellIndex(LoginRequiredMixin, ListView):
@@ -32,5 +15,10 @@ class ExamCellIndex(LoginRequiredMixin, ListView):
         pass
 
 
-class ExamCellResults(LoginRequiredMixin, ResultViewMixin, ArchiveIndexView):
+class ExamCellResults(LoginRequiredMixin, ArchiveIndexView):
+    date_field = 'pub_date'
     template_name = "results/examcell_results.html"
+    allow_empty = True
+
+    def get_queryset(self):
+        return Result.objects.published()
