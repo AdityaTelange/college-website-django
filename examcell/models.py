@@ -150,7 +150,7 @@ class Result(models.Model):
 
     def __str__(self):
         return '-'.join(
-            [str(self.type), str(self.year), str(self.branch), str(self.pattern_yr), str(self.semester),
+            [str(self.type), str(self.year), str(self.branch), str(self.pattern_year), str(self.semester),
              str(self.pattern), str(self.exam_month),
              str(self.exam_year)])
 
