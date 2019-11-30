@@ -12,4 +12,12 @@
 </div>
 {% endfor %}
 
+{% if not latest %}
+<div class="p-2">
+    <div class="alert alert-info" role="alert">
+        No Results Published.
+    </div>
+</div>
+{% endif %}
+
 {% endblock %}
