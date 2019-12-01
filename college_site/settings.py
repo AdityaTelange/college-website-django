@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'accounts',
     'examcell',
     'django_cleanup.apps.CleanupConfig',  # https://github.com/un1t/django-cleanup
-    'django_extensions'
+    'django_extensions',
+    'django.contrib.sitemaps'
 ]
 
 MIDDLEWARE = [
