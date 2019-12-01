@@ -77,7 +77,18 @@
         </ul>
     </div>
     {% if user.is_authenticated %}
-    <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}">Logout</a>
+    <div class="dropdown">
+        <button type="button" class="btn btn-secondary dropdown-toggle btn-sm" id="dropdownMenuOffset" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+            {{ user }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+            <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+            <div class="dropdown-item">
+                <a class="btn btn-sm btn-outline-secondary" href="{% url 'logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
     {% else %}
     <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#">
