@@ -4,9 +4,19 @@ Django settings for webpage project.
 
 import os
 
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = 'pr8rz4tbstg+!rfonnw)#d1k5j24t_+di!imw1epo5v4rcruez'
-DEBUG = 1
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env('DEBUG')
 ALLOWED_HOSTS = ['*']
 ROOT_URLCONF = 'college_site.urls'
 WSGI_APPLICATION = 'college_site.wsgi.application'
