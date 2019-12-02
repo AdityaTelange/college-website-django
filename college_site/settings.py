@@ -23,7 +23,6 @@ WSGI_APPLICATION = 'college_site.wsgi.application'
 
 AUTH_USER_MODEL = "accounts.User"
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/'
 
 # Application definition
 INSTALLED_APPS = [
