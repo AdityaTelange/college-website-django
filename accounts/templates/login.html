@@ -22,7 +22,7 @@
                     {{ form.username.label_tag }}
                     <input class="form-control {% if form.username.errors %} is-invalid {% endif %}"
                            id="id_username" name="username" placeholder="Username" type="text"
-                           value="{{ form.username.value|default:'' }}">
+                           value="{{ form.username.value|default:'' }}" autofocus>
                     {% if form.password.errors %}
                     <div class="invalid-feedback">{{ form.username.errors }}</div>
                     {% endif %}
