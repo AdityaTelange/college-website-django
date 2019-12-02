@@ -8,22 +8,32 @@
             <h2>Login</h2>
             <p>Please fill the form below.</p>
             <form method="POST"> {% csrf_token %}
-                {{ form.non_field_errors }}
-                <div class="form-group"> {{ form.email.label_tag }}
-                    <input class="form-control {% if form.email.errors %} is- invalid{% endif %}"
-                           id="id_email" name="email" placeholder="Email id" type="email"
-                           value="{{ form.email.value|default:'' }}">
+                {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{error}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    <input class="form-control {% if form.username.errors %} is-invalid {% endif %}"
+                           id="id_username" name="username" placeholder="Username" type="text"
+                           value="{{ form.username.value|default:'' }}">
                     {% if form.password.errors %}
-                    <div class="invalid-feedback"> {{ form.email.errors }}</div>
+                    <div class="invalid-feedback">{{ form.username.errors }}</div>
                     {% endif %}
                 </div>
-                <div class="form-group"> {{ form.password.label_tag }}
-                    <input class="form-control{% if form.password.errors %} is- invalid{% endif %}"
-                           id="id_password" placeholder="Password"
-                           name="password" type="password"
+                <div class="form-group">
+                    {{ form.password.label_tag }}
+                    <input class="form-control {% if form.password.errors %} is-invalid {% endif %}"
+                           id="id_password" name="password" placeholder="Password" type="password"
                            value="{{ form.password.value|default:'' }}">
                     {% if form.password.errors %}
-                    <div class="invalid-feedback"> {{ form.password.errors }}</div>
+                    <div class="invalid-feedback">{{ form.password.errors }}</div>
                     {% endif %}
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>

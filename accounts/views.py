@@ -16,5 +16,4 @@ class ProfileView(LoginRequiredMixin, ListView):
     model = models.User
 
     def get_queryset(self):
-        print(self.request.user)
         return self.model.objects.filter(email=self.request.user)
